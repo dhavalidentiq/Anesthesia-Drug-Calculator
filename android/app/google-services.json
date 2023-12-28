@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618243328840",
+    "project_id": "anesthesia-calculations",
+    "storage_bucket": "anesthesia-calculations.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618243328840:android:8f04fd6a616572f912017d",
+        "android_client_info": {
+          "package_name": "com.app.anesthesiacalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618243328840-oa08i2g8ule4j6me5nrtgfi34uoq37ke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdjAJyJFiO44NKEKSs96rBdBhzoqvYId4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618243328840-oa08i2g8ule4j6me5nrtgfi34uoq37ke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
