@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text as Text1 } from 'react-native';
-import { colors, font, fonts, sizes } from '../../styles/theme';
-import { responsiveScale } from '../../styles/mixins';
+import React, { Component } from "react";
+import { StyleSheet, Text as Text1 } from "react-native";
+import { colors, font, fonts, sizes } from "../../styles/theme";
+import { responsiveScale } from "../../styles/mixins";
 
 export default class Text extends Component {
   constructor(props) {
@@ -98,23 +98,23 @@ const styles = StyleSheet.create({
   },
   // variations
   regular: {
-    fontFamily: font.outfit_Regular,
+    fontFamily: font.roboto_Regular,
   },
 
   bold: {
-    fontFamily: font.outfit_Bold,
+    fontFamily: font.roboto_Bold,
   },
 
   medium: {
-    fontFamily: font.outfit_Medium,
+    fontFamily: font.roboto_Medium,
   },
   semibold: {
-    fontFamily: font.outfit_Semi_Bold,
+    fontFamily: font.roboto_Semi_Bold,
   },
 
   // position
-  center: { textAlign: 'center' },
-  right: { textAlign: 'right' },
+  center: { textAlign: "center" },
+  right: { textAlign: "right" },
   // colors
   primary: { color: colors.primary },
   secondary: { color: colors.secondary },
@@ -128,5 +128,5 @@ const styles = StyleSheet.create({
   body: fonts.body,
   caption: fonts.caption,
   small: fonts.small,
-  arabic: { transform: [{ scaleX: -1 }], textAlign: 'right' },
+  arabic: { transform: [{ scaleX: -1 }], textAlign: "right" },
 });

@@ -1,10 +1,10 @@
-import React from 'react';
-import { View } from 'react-native';
-import { StyleSheet } from 'react-native';
-import BurnsIcon from '../assets/appImages/BurnsIcon.svg';
-import Text from './utilities/Text';
-import { responsiveScale } from '../styles/mixins';
-import { font, perfectSize } from '../styles/theme';
+import React from "react";
+import { View } from "react-native";
+import { StyleSheet } from "react-native";
+import BurnsIcon from "../assets/appImages/BurnsIcon.svg";
+import Text from "./utilities/Text";
+import { responsiveScale } from "../styles/mixins";
+import { font, perfectSize } from "../styles/theme";
 
 // type BurnsHeader = {
 //   textColor: string;
@@ -16,7 +16,7 @@ import { font, perfectSize } from '../styles/theme';
 //   _pediatricTotalSumBurns: any;
 // };
 
-const BurnsHeader = props => {
+const BurnsHeader = (props) => {
   const {
     textColor,
     npoColor,
@@ -32,53 +32,54 @@ const BurnsHeader = props => {
       <View style={styles.estimatedMainView}>
         <Text
           style={[
+            styles.estimatedTextView,
+            {
+              color: textColor,
+            },
+          ]}
+        >
+          Estimated 24 hour {"\n"} Total (ml)
+        </Text>
+        <Text
+          style={[
             styles.estimatedTextValue,
             {
               color: npoColor,
             },
-          ]}>
+          ]}
+        >
           {!peds
             ? Math.round(result.totalFluidAdult)
             : Math.round(result.totalFluidPediatric)}
         </Text>
+      </View>
+
+      <View style={styles.burnsIconMainView}>
+        <BurnsIcon height={perfectSize(55)} width={perfectSize(55)} />
+      </View>
+
+      <View style={styles.tbsaMainView}>
         <Text
           style={[
             styles.estimatedTextView,
             {
               color: textColor,
             },
-          ]}>
-          Estimated 24 hour {'\n'} Total (ml)
+          ]}
+        >
+          Estimated TBSA {"\n"} Burned (%)
         </Text>
-      </View>
-
-      <View style={styles.burnsIconMainView}>
-        <BurnsIcon height={perfectSize(90)} width={perfectSize(90)} />
-        {/* <View style={styles.burnsIconChildView}>
-          <BurnsIcon width={'100%'} height={'100%'} />
-        </View> */}
-      </View>
-
-      <View style={styles.tbsaMainView}>
         <Text
           style={[
             styles.estimatedTextValue,
             {
               color: sflColor,
             },
-          ]}>
+          ]}
+        >
           {!peds
             ? parseFloat(totalSumBurns).toFixed(1)
             : parseFloat(_pediatricTotalSumBurns).toFixed(1)}
-        </Text>
-        <Text
-          style={[
-            styles.estimatedTextView,
-            {
-              color: textColor,
-            },
-          ]}>
-          Estimated TBSA {'\n'} Burned (%)
         </Text>
       </View>
     </View>
@@ -87,27 +88,28 @@ const BurnsHeader = props => {
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: perfectSize(10),
   },
   estimatedMainView: {
     // flex: 1.3,
-    alignItems: 'center',
+    alignItems: "center",
   },
   estimatedTextView: {
-    fontSize: responsiveScale(18),
+    fontSize: responsiveScale(15),
     fontFamily: font.outfit_Medium,
-    textAlign: 'center',
+    textAlign: "center",
   },
   estimatedTextValue: {
-    fontSize: responsiveScale(25),
+    fontSize: responsiveScale(20),
     fontFamily: font.outfit_Semi_Bold,
   },
   burnsIconMainView: {
     // flex: 0.6,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     // backgroundColor: 'red',
   },
   burnsIconChildView: {
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
   },
   tbsaMainView: {
     // flex: 1.3,
-    alignItems: 'center',
+    alignItems: "center",
   },
 });
 

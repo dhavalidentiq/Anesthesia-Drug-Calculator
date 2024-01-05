@@ -33,19 +33,8 @@ export default CalculationBlood = ({ navigation, route }) => {
 
   const [selectedButton, setSelectedButton] = useState(null);
 
-  // const buttonData = [
-  //   { label: 'A+', color: '#0068FF' },
-  //   { label: 'A-', color: '#E93B30' },
-  //   { label: 'B+', color: '#35A819' },
-  //   { label: 'B-', color: '#0E68BB' },
-  //   { label: 'AB+', color: '#873BE8' },
-  //   { label: 'AB-', color: '#EE436C' },
-  //   { label: 'O+', color: '#E67000' },
-  //   { label: 'O-', color: '#2C0089' },
-  // ];
-
   const buttonData = [
-    { label: "A+", color: "#0068FF", compatible: ["A+", "A-", "O+", "O-"] },
+    { label: "A+", color: "#02A3A3", compatible: ["A+", "A-", "O+", "O-"] },
     { label: "A-", color: "#E93B30", compatible: ["A-", "O-"] },
     { label: "B+", color: "#35A819", compatible: ["B+", "B-", "O+", "O-"] },
     { label: "B-", color: "#0E68BB", compatible: ["B-", "O-"] },
@@ -205,8 +194,10 @@ export default CalculationBlood = ({ navigation, route }) => {
                 <View style={styles.educationView}>
                   <Text
                     bold
-                    style={[styles.educationHeader, { color: "#EA473B" }]}
-                    // color={colors.black}
+                    style={[
+                      styles.educationHeader,
+                      { color: colors.drugRedColor },
+                    ]}
                   >
                     Adult EBV
                   </Text>
@@ -244,7 +235,10 @@ export default CalculationBlood = ({ navigation, route }) => {
                 <View style={styles.educationView}>
                   <Text
                     bold
-                    style={[styles.educationHeader, { color: "#0051C6" }]}
+                    style={[
+                      styles.educationHeader,
+                      { color: colors.drugThemeColor },
+                    ]}
                     // color={colors.black}
                   >
                     Pediatric EBV
@@ -639,97 +633,63 @@ export default CalculationBlood = ({ navigation, route }) => {
         </View>
 
         <View
-          style={
-            {
-              // shadowColor: '#000',
-              // shadowOffset: {
-              //   width: 0,
-              //   height: 1,
-              // },
-              // shadowOpacity: 0.22,
-              // shadowRadius: 2.22,
-              // elevation: 3,
-            }
-          }
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            marginBottom: perfectSize(15),
+          }}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              marginBottom: perfectSize(15),
-            }}
-          >
-            <TouchableOpacity>
-              <View
+          {buttonData.map((button, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => handleButtonPress(button.label)}
+              style={{
+                margin: perfectSize(10),
+                // padding: perfectSize(10),
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: perfectSize(5),
+                width: perfectSize(44),
+                // height: perfectSize(44),
+                paddingVertical: perfectSize(10),
+                backgroundColor:
+                  selectedButton === button.label
+                    ? colors.drugThemeColor
+                    : "#FFFFFF",
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 1,
+                },
+                shadowOpacity: 0.22,
+                shadowRadius: 2.22,
+                elevation: 3,
+              }}
+            >
+              <Text
+                adjustsFontSizeToFit
+                numberOfLines={1}
                 style={{
-                  margin: perfectSize(10),
-                  // padding: perfectSize(10),
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: perfectSize(5),
-                  width: perfectSize(44),
-                  // height: perfectSize(44),
-                  paddingVertical: perfectSize(10),
-                  backgroundColor: "#FFFFFF",
-                  shadowColor: "#000",
-                  shadowOffset: {
-                    width: 0,
-                    height: 1,
-                  },
-                  shadowOpacity: 0.22,
-                  shadowRadius: 2.22,
-                  elevation: 3,
+                  fontSize: responsiveScale(20),
+                  fontFamily: font.outfit_Semi_Bold,
+                  color:
+                    selectedButton === button.label ? "white" : button.color,
                 }}
               >
-                <FluidsCal_Icon
-                  width={perfectSize(24)}
-                  height={perfectSize(24)}
-                />
-              </View>
+                {button.label}
+              </Text>
             </TouchableOpacity>
-            {buttonData.map((button, index) => (
-              <TouchableOpacity
-                key={index}
-                onPress={() => handleButtonPress(button.label)}
-                style={{
-                  margin: perfectSize(10),
-                  // padding: perfectSize(10),
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: perfectSize(5),
-                  width: perfectSize(44),
-                  // height: perfectSize(44),
-                  paddingVertical: perfectSize(10),
-                  backgroundColor:
-                    selectedButton === button.label ? "#0068FF" : "#FFFFFF",
-                  shadowColor: "#000",
-                  shadowOffset: {
-                    width: 0,
-                    height: 1,
-                  },
-                  shadowOpacity: 0.22,
-                  shadowRadius: 2.22,
-                  elevation: 3,
-                }}
-              >
-                <Text
-                  adjustsFontSizeToFit
-                  numberOfLines={1}
-                  style={{
-                    fontSize: responsiveScale(20),
-                    fontFamily: font.outfit_Semi_Bold,
-                    color:
-                      selectedButton === button.label ? "white" : button.color,
-                  }}
-                >
-                  {button.label}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
+          ))}
         </View>
-        <View style={{ alignItems: "center" }}>
+        <View
+          style={{
+            alignItems: "center",
+            // justifyContent: "center",
+            flex: 1,
+            // backgroundColor: colors.drugThemeColor,
+          }}
+        >
           <Text>{renderCompatibleTypes()}</Text>
         </View>
         <View
