@@ -1,20 +1,10 @@
 import React from "react";
 import { View } from "react-native";
 import { StyleSheet } from "react-native";
-import BurnsIcon from "../assets/appImages/BurnsIcon.svg";
+import BurnsIconNew from "../assets/appImages/BurnsIconNew.svg";
 import Text from "./utilities/Text";
 import { responsiveScale } from "../styles/mixins";
 import { font, perfectSize } from "../styles/theme";
-
-// type BurnsHeader = {
-//   textColor: string;
-//   npoColor: string;
-//   sflColor: string;
-//   peds: boolean;
-//   result: any;
-//   totalSumBurns: any;
-//   _pediatricTotalSumBurns: any;
-// };
 
 const BurnsHeader = (props) => {
   const {
@@ -55,7 +45,7 @@ const BurnsHeader = (props) => {
       </View>
 
       <View style={styles.burnsIconMainView}>
-        <BurnsIcon height={perfectSize(55)} width={perfectSize(55)} />
+        <BurnsIconNew height={perfectSize(55)} width={perfectSize(55)} />
       </View>
 
       <View style={styles.tbsaMainView}>
