@@ -166,7 +166,7 @@ export default CalculationBlood = ({ navigation, route }) => {
             <View
               style={{
                 flex: 1,
-                padding: 20,
+                padding: perfectSize(20),
                 paddingTop:
                   insets.top > 40 ? insets.top + perfectSize(10) : insets.top,
                 paddingBottom: perfectSize(5),
@@ -632,12 +632,22 @@ export default CalculationBlood = ({ navigation, route }) => {
           </Text>
         </View>
 
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             flexWrap: "wrap",
             justifyContent: "center",
             marginBottom: perfectSize(15),
+          }}
+        > */}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{
+            flexDirection: "row",
+            justifyContent: "center",
+            marginBottom: perfectSize(15),
+            alignItems: "center",
           }}
         >
           {buttonData.map((button, index) => (
@@ -649,22 +659,24 @@ export default CalculationBlood = ({ navigation, route }) => {
                 // padding: perfectSize(10),
                 justifyContent: "center",
                 alignItems: "center",
-                borderRadius: perfectSize(5),
-                width: perfectSize(44),
-                // height: perfectSize(44),
+                borderRadius: perfectSize(25),
+                borderColor: "#2B2B2B",
+                borderWidth: 0.2,
+                width: perfectSize(50),
+                height: perfectSize(50),
                 paddingVertical: perfectSize(10),
                 backgroundColor:
                   selectedButton === button.label
                     ? colors.drugThemeColor
                     : "#FFFFFF",
-                shadowColor: "#000",
-                shadowOffset: {
-                  width: 0,
-                  height: 1,
-                },
-                shadowOpacity: 0.22,
-                shadowRadius: 2.22,
-                elevation: 3,
+                // shadowColor: "#000",
+                // shadowOffset: {
+                //   width: 0,
+                //   height: 1,
+                // },
+                // shadowOpacity: 0.22,
+                // shadowRadius: 2.22,
+                // elevation: 3,
               }}
             >
               <Text
@@ -681,7 +693,8 @@ export default CalculationBlood = ({ navigation, route }) => {
               </Text>
             </TouchableOpacity>
           ))}
-        </View>
+        </ScrollView>
+        {/* </View> */}
         <View
           style={{
             alignItems: "center",

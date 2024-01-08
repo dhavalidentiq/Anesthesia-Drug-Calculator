@@ -26,6 +26,7 @@ import AntihypertensivesIconNew from "../../assets/appImages/AntihypertensivesIc
 import TivaIconNew from "../../assets/appImages/TivaIconNew.svg";
 import ReversalIconNew from "../../assets/appImages/ReversalIconNew.svg";
 import PremedicationIconNew from "../../assets/appImages/PremedicationIconNew.svg";
+import PolygonIcon from "../../assets/appImages/PolygonIcon.svg";
 import {
   AdultDrugsCategories,
   PediatricDrugsCategories,
@@ -289,8 +290,10 @@ export default CalculationDrugs = ({ navigation, route }) => {
     } = styles;
 
     return Drugs.map((item, i) => {
-      const label = item.label;
-      const textColor = item.textColor;
+      // const label = item.label;
+      const label = colors.white;
+      // const textColor = item.textColor;
+      const textColor = "black";
       const border = item.border ? item.border : { borderWidth: 0.2 }; //default border if not specified in the drug object
       // const primaryPurposeUC =
       //   item.primaryPurpose.charAt(0).toUpperCase() +
@@ -356,40 +359,38 @@ export default CalculationDrugs = ({ navigation, route }) => {
               });
             }}
           >
-            <LinearGradient
+            {/* <LinearGradient
               // colors={[label, '#FFFFFF']} // You can adjust the colors as needed
               colors={gradientColors}
               start={{ x: 0.4, y: 0 }}
               end={{ x: 1.5, y: 3 }}
               style={styles.drugContainer}
+            > */}
+            <View
+              key={i}
+              // style={[drugContainer, border, { backgroundColor: label }]}
+              style={drugContainer}
             >
-              <View
-                key={i}
-                // style={[drugContainer, border, { backgroundColor: label }]}
-                style={drugContainer}
-              >
-                <View style={titleContainer}>
-                  <Text
-                    // bold
-                    style={[drugName, { color: textColor }]}
-                    adjustsFontSizeToFit
-                    numberOfLines={1}
-                  >
-                    {title}
-                  </Text>
-                  <Text
-                    // regular
-                    style={[drugPrimaryPurpose, { color: textColor }]}
-                  >
-                    {/* {primaryPurposeUC} */}
-                    {item?.uses?.[0]?.purpose} {renderMethod()}
-                  </Text>
-                </View>
-                <View style={usesContainer}>
-                  {outputUses(item.uses, item.textColor)}
-                </View>
+              <View style={titleContainer}>
+                <Text
+                  // bold
+                  style={[drugName, { color: textColor }]}
+                  adjustsFontSizeToFit
+                  numberOfLines={1}
+                >
+                  {title}
+                </Text>
+                <Text
+                  // regular
+                  style={[drugPrimaryPurpose, { color: textColor }]}
+                >
+                  {/* {primaryPurposeUC} */}
+                  {item?.uses?.[0]?.purpose} {renderMethod()}
+                </Text>
               </View>
-            </LinearGradient>
+              <View style={usesContainer}>{outputUses(item.uses)}</View>
+            </View>
+            {/* </LinearGradient> */}
           </TouchableOpacity>
         </View>
       );
@@ -707,11 +708,26 @@ export default CalculationDrugs = ({ navigation, route }) => {
                 >
                   {item?.name}
                 </Text>
+                {selectedIcon?.id === item?.id ? (
+                  <View style={{ alignItems: "center" }}>
+                    <PolygonIcon
+                      height={perfectSize(25)}
+                      width={perfectSize(25)}
+                    />
+                  </View>
+                ) : null}
               </TouchableOpacity>
             </View>
           );
         })}
       </ScrollView>
+      <View
+        style={{
+          borderBottomColor: "#CACACA",
+          borderBottomWidth: 1,
+          marginBottom: perfectSize(10),
+        }}
+      />
 
       {/* <ScrollView
         horizontal
@@ -826,9 +842,12 @@ const styles = StyleSheet.create({
     // marginBottom: 5,
     // paddingHorizontal: 10,
     borderRadius: perfectSize(7),
-    marginHorizontal: perfectSize(10),
+    marginHorizontal: perfectSize(20),
     marginTop: perfectSize(7),
-    paddingBottom: perfectSize(3),
+    // paddingBottom: perfectSize(3),
+    borderColor: colors.drugThemeColor,
+    borderWidth: 2,
+    padding: perfectSize(10),
   },
   usesContainer: {
     flex: 1.4,
@@ -848,9 +867,9 @@ const styles = StyleSheet.create({
   containerContentStyle: {
     paddingLeft: perfectSize(15),
     paddingBottom: perfectSize(20),
-    borderBottomColor: "#CACACA",
-    borderBottomWidth: 0.5,
-    marginVertical: perfectSize(5),
+    // borderBottomColor: "#CACACA",
+    // borderBottomWidth: 0.5,
+    // marginVertical: perfectSize(5),
   },
   drgsTypeImageView: {
     width: Dimensions.get("screen").width / 6 - 34,
